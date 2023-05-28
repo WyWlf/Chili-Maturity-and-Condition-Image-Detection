@@ -27,7 +27,8 @@ classes = {
     9: 'No object detected',
     0: 'Half-Ripe',
     1: 'Ripe',
-    2: 'Unripe'
+    2: 'Unripe',
+    3: ''
 
 }
 
