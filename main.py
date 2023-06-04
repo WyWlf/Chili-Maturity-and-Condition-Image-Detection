@@ -6,11 +6,11 @@ import cv2
 import re
 import numpy as np
 on = True
-model = YOLO('best.pt')
+model = YOLO('chili.pt')
 gui = tk.Tk()
 gui.geometry("900x900")
-gui.title("Chili Maturity and Health Inspection System")
-cam = cv2.VideoCapture(0)
+gui.title("SpiceSee")
+cam = cv2.VideoCapture(1    )
 maturity = StringVar()
 health = StringVar()
 remarks = StringVar()
@@ -28,22 +28,17 @@ classes = {
     0: 'Half-Ripe',
     1: 'Ripe',
     2: 'Unripe',
-    3: '',
-    4: '',
-    5: '',
-    6: '',
-    
+    3: ''
 
 }
 
 health_desc = {
     9: 'No description available',
-    0: 'No presence of damage, decay and diseases',
-    1: 'No presence of damage, decay and diseases',
+    0: 'The chili is affected with disease',
+    1: 'The chili has physical damage',
     2: 'No presence of damage, decay and diseases',
-    4: 'The chili has physical damage',
-    5: 'The chili is affected with disease',
-    6: 'The chili is decaying'
+    3: 'The chili is decaying',
+    4: 'No presence of damage, decay and diseases',
 }
 remarks = {
 
@@ -55,7 +50,7 @@ def quit(y):
 
 while on:
     ret, frame = cam.read()
-    results = model(frame, conf=0.3, verbose=False, max_det = 5)
+    results = model(frame, conf=0.7, verbose=False, max_det = 1)
     annotated_frame = results[0].plot()
     text = str(results[0].boxes.cls)
     num = int(re.search("\d+" , text+"9")[0])
