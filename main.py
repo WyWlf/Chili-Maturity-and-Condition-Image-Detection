@@ -6,7 +6,7 @@ import cv2
 import re
 import numpy as np
 on = True
-model = YOLO('chili.pt')
+model = YOLO('best.pt')
 gui = tk.Tk()
 gui.geometry("900x900")
 gui.title("Chili Maturity and Health Inspection System")
@@ -28,7 +28,11 @@ classes = {
     0: 'Half-Ripe',
     1: 'Ripe',
     2: 'Unripe',
-    3: ''
+    3: '',
+    4: '',
+    5: '',
+    6: '',
+    
 
 }
 
